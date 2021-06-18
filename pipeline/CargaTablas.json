@@ -1,0 +1,409 @@
+{
+	"name": "CargaTablas",
+	"properties": {
+		"activities": [
+			{
+				"name": "CargaProcesoProducto",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaProcesoProducto.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'PROCESO_PRODUCTO.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaSubproducto",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaSubproducto.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'SUBPRODUCTO.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaClasificacionDeudorPorcentaje",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaClasificacionDeudorPorcentaje.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'CLASIFICACION_DEUDOR_PORCENTAJE.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaClasificacionDiasAtraso",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaClasificacionDiasAtraso.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'CLASIFICACION_DEUDOR_DIAS_ATRASO.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaDiscrepancia",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaDiscrepancia.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'DISCREPANCIA_CLASIFICACION_DEUDOR.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaEmpresa",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaEmpresa.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'EMPRESA.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaAgencia",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaAgencia.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'AGENCIA.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaAgenciaOficina",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaAgenciaOficina.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'AGENCIA_OFICINA.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaOficina",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaOficina.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'OFICINA.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaProducto",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaProducto.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'PRODUCTO.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaTipoCreditoSbs",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaTipoCreditoSbs.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'TIPO_CREDITO_SBS.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaCuentaContable",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaCuentaContable.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'CUENTA_CONTABLE.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaProcesoProductoDetalle",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/Configurations/CargaProcesoProductoDetalle.usql",
+					"scriptLinkedService": {
+						"referenceName": "storageereport",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"NombreArchivo": {
+							"value": "@concat(variables('rutaDestino'), 'PROCESO_PRODUCTO_DETALLE.csv')",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"rutaDestino": {
+				"type": "String",
+				"defaultValue": "/src/Core/InnovationCleverly.eReport.Anexos/Configurations/tables/"
+			}
+		},
+		"folder": {
+			"name": "Configurations"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-09T22:06:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

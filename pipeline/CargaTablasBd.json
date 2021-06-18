@@ -1,0 +1,1556 @@
+{
+	"name": "CargaTablasBd",
+	"properties": {
+		"activities": [
+			{
+				"name": "CargaClienteDeudor",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureDataLakeStoreReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE CLIENTE_DEUDOR",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Empresa",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EMPRESA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CodigoDeudor",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CODIGO_DEUDOR",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CodigoDeudorSbs",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CODIGO_DEUDOR_SBS",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoDocumentoIdentidad",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_DOCUMENTO_IDENTIDAD",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DocumentoIdentidad",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DOCUMENTO_IDENTIDAD",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Ciiu",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CIIU",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ZonaRegistral",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ZONA_REGISTRAL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "OficinaRegistral",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OFICINA_REGISTRAL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoIdentificacionRegistral",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_IDENTIFICACION_REGISTRAL",
+									"type": "String",
+									"physicalType": "char"
+								}
+							},
+							{
+								"source": {
+									"name": "NumeroPartidaRegistral",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMERO_PARTIDA_REGISTRAL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoDocumentoTributario",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_DOCUMENTO_TRIBUTARIO",
+									"type": "String",
+									"physicalType": "char"
+								}
+							},
+							{
+								"source": {
+									"name": "DocumentoTributario",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DOCUMENTO_TRIBUTARIO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoPersona",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_PERSONA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Residencia",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RESIDENCIA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Magnitud",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MAGNITUD",
+									"type": "String",
+									"physicalType": "char"
+								}
+							},
+							{
+								"source": {
+									"name": "Accionista",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ACCIONISTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RelacionLaboral",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RELACION_LABORAL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PaisResidencia",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PAIS_RESIDENCIA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Genero",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "GENERO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "EstadoCivil",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ESTADO_CIVIL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Sigla",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SIGLA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ApellidoPaternoRazonSocial",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "APELLIDO_PATERNO_RAZON_SOCIAL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ApellidoMaterno",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "APELLIDO_MATERNO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ApellidoCasada",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "APELLIDO_CASADA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimerNombre",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRIMER_NOMBRE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SegundoNombre",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SEGUNDO_NOMBRE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NombreRestante",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NOMBRE_RESTANTE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Direccion",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DIRECCION",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Telefono",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TELEFONO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaNacimiento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_NACIMIENTO",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "CodOcupacion",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "COD_OCUPACION",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DescOcupacion",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DESC_OCUPACION",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CodSectorista",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "COD_SECTORISTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ApePaternoSectorista",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "APE_PATERNO_SECTORISTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ApeMaternoSectorista",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "APE_MATERNO_SECTORISTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PrimerNombreSectorista",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRIMER_NOMBRE_SECTORISTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SegundoNombreSectorista",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SEGUNDO_NOMBRE_SECTORISTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "AgenciaSectorista",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AGENCIA_SECTORISTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NivelRiesgo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NIVEL_RIESGO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaRevision",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_REVISION",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "Renta",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RENTA",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 12
+								}
+							},
+							{
+								"source": {
+									"name": "Agencia",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AGENCIA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoDocComplementario",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_DOCUMENTO_COMPLEMENTARIO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DocComplementario",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DOCUMENTO_COMPLEMENTARIO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Ubigueo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "UBICACION_GEOGRAFICA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoPersonaJuridica",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_PERSONA_JURIDICA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CategoriaLaboral",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CATEGORIA_LABORAL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "storageereportBd",
+						"type": "DatasetReference",
+						"parameters": {
+							"nombreArchivo": "ClienteDeudor"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dbnormativo",
+						"type": "DatasetReference",
+						"parameters": {
+							"nombreTabla": "CLIENTE_DEUDOR"
+						}
+					}
+				]
+			},
+			{
+				"name": "CargaCliente",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureDataLakeStoreReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE CLIENTE",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "FechaProceso",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PERIODO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CodigoDeudor",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CODIGO_DEUDOR",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Secuencia",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SECUENCIA",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "ClasificacionDeudor",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CLASIFICACION_DEUDOR",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "ClasificacionDeudorSinAlineamiento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CLASIFICACION_DEUDOR_SIN_ALINEAMIENTO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "ClasificacionDeudorConAlineamiento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CLASIFICACION_DEUDOR_CON_ALINEAMIENTO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "DiasAtraso",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DIAS_ATRASO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "IndicadorRiesgoCambiario",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "INDICADOR_RIESGO_CAMBIARIO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "IndicadorAtraso",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "INDICADOR_ATRASO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ClasificacionDeudorInterno",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CLASIFICACION_DEUDOR_INTERNO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "CondicionSobreEndeudamiento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONDICION_SOBRE_ENDEUDAMIENTO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaActualizacion",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_ACTUALIZACION",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "storageereportBd",
+						"type": "DatasetReference",
+						"parameters": {
+							"nombreArchivo": "Cliente"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dbnormativo",
+						"type": "DatasetReference",
+						"parameters": {
+							"nombreTabla": "CLIENTE"
+						}
+					}
+				]
+			},
+			{
+				"name": "CargaClienteDeudorProducto",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureDataLakeStoreReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE CLIENTE_DEUDOR_PRODUCTO",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CodigoDeudor",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CODIGO_DEUDOR",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Producto",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRODUCTO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "NumeroCuenta",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMERO_CUENTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaApertura",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_APERTURA",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaAprobacion",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_APROBACION",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaCastigo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_CASTIGO",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "DiasAtrasoCastigo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DIAS_ATRASO_CASTIGO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaJudicial",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_JUDICIAL",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "DiasAtrasoJudicial",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DIAS_ATRASO_JUDICIAL",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaRefinanciado",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_REFINANCIADO",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "DiasAtrasoRefinanciado",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DIAS_ATRASO_REFINANCIADO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaTransferencia",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_TRANSFERENCIA",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "DiasAtrasoTransferencia",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DIAS_ATRASO_TRANSFERENCIA",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "EstadoCuenta",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ESTADO_CUENTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "storageereportBd",
+						"type": "DatasetReference",
+						"parameters": {
+							"nombreArchivo": "ClienteDeudorProducto"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dbnormativo",
+						"type": "DatasetReference",
+						"parameters": {
+							"nombreTabla": "CLIENTE_DEUDOR_PRODUCTO"
+						}
+					}
+				]
+			},
+			{
+				"name": "CargaClienteProducto",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureDataLakeStoreReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE CLIENTE_PRODUCTO",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "FechaProceso",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PERIODO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Empresa",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EMPRESA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Producto",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRODUCTO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "NumeroCuenta",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMERO_CUENTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CodigoDeudor",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CODIGO_DEUDOR",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoCliente",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_CLIENTE",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoCredito",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_CREDITO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Aval",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AVAL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DiasAtraso",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DIAS_ATRASO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "ClasificacionDeudorSinAlineamiento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CLASIFICACION_DEUDOR_SIN_ALINEAMIENTO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "SituacionCredito",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SITUACION_CREDITO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Oficina",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "OFICINA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Alineacion",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ALINEACION",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ClasificacionDeudor",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CLASIFICACION_DEUDOR",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "SaldoCapital",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SALDO_CAPITAL",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "MontoDesembolsado",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MONTO_DESEMBOLSADO",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaActualizacion",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_ACTUALIZACION",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "storageereportBd",
+						"type": "DatasetReference",
+						"parameters": {
+							"nombreArchivo": "ClienteProducto"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dbnormativo",
+						"type": "DatasetReference",
+						"parameters": {
+							"nombreTabla": "CLIENTE_PRODUCTO"
+						}
+					}
+				]
+			},
+			{
+				"name": "CargaClienteProductoConcepto",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureDataLakeStoreReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE CLIENTE_PRODUCTO_CONCEPTO",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "FechaProceso",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PERIODO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Empresa",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EMPRESA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Producto",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PRODUCTO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "NumeroCuenta",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMERO_CUENTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ConceptoSaldo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONCEPTO_SALDO",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "ConceptoClasificacion",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONCEPTO_CLASIFICACION",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Moneda",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MONEDA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TipoCreditoSBS",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_CREDITO_SBS",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Importe",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IMPORTE",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "ImporteIngreso",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IMPORTE_INGRESO",
+									"type": "Double",
+									"physicalType": "float"
+								}
+							},
+							{
+								"source": {
+									"name": "CuentaInforme",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CUENTA_CONTABLE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ConceptoSaldoPrincipal",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONCEPTO_SALDO_PRINCIPAL",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "FechaActualizacion",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FECHA_ACTUALIZACION",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "storageereportBd",
+						"type": "DatasetReference",
+						"parameters": {
+							"nombreArchivo": "ClienteProductoConcepto"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dbnormativo",
+						"type": "DatasetReference",
+						"parameters": {
+							"nombreTabla": "CLIENTE_PRODUCTO_CONCEPTO"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Configurations"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-10T21:15:36Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

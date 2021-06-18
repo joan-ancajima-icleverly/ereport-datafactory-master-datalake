@@ -1,0 +1,35 @@
+{
+	"name": "storageereportBd",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "storageereport",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"nombreArchivo": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Archivos"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureDataLakeStoreLocation",
+				"fileName": {
+					"value": "@concat(dataset().nombreArchivo, '.csv')",
+					"type": "Expression"
+				},
+				"folderPath": "/interfaces/normativo/out"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

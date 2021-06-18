@@ -1,0 +1,41 @@
+{
+	"name": "GeneraPlanoRcd",
+	"properties": {
+		"activities": [
+			{
+				"name": "GeneraPlanoRcd",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/Core/InnovationCleverly.eReport.Anexos/GeneraPlanoRcd.usql",
+					"degreeOfParallelism": 1,
+					"scriptLinkedService": {
+						"referenceName": "ereportadlascripts",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"RutaDestino": "/interfaces/falabella/out/"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Rcd/Normativo/Procesos"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-10T22:51:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

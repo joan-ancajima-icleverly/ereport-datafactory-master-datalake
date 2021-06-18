@@ -1,0 +1,40 @@
+{
+	"name": "bf_CargaInterfaceSaldosRcd",
+	"properties": {
+		"activities": [
+			{
+				"name": "bf_CargaInterfaceSaldosRcd",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/External/InnovationCleverly.eReport.Cargas.Falabella/Cargas/CargaInterfaceSaldoRcd.usql",
+					"scriptLinkedService": {
+						"referenceName": "ereportadlascripts",
+						"type": "LinkedServiceReference"
+					},
+					"parameters": {
+						"RutaSaldoRcd": "/interfaces/falabella/in/SALDOSRCD202101.DAT"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Rcd/Falabella/Cargas"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-01T22:39:59Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

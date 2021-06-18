@@ -1,0 +1,52 @@
+{
+	"name": "ReporteN6A",
+	"properties": {
+		"activities": [
+			{
+				"name": "CargarN6ASantander",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "CargarN6ASantander",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "CargarN6AFalabella",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "CargarN6AFalabella",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ProcesarN6A",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ProcesaClasificacionInterna",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "ReporteN6A"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-01T23:39:35Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

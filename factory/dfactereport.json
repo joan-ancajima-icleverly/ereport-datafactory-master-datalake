@@ -1,0 +1,9 @@
+{
+	"name": "dfactereport",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a29b7c5d-fa39-4d23-8b0a-c5c72e2afc8b",
+		"tenantId": "802abeec-0c6c-4d9f-a6b9-f4d419f09189"
+	}
+}

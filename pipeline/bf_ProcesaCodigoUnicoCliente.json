@@ -1,0 +1,37 @@
+{
+	"name": "bf_ProcesaCodigoUnicoCliente",
+	"properties": {
+		"activities": [
+			{
+				"name": "bf_ProcesaCodigoUnicoCliente",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/External/InnovationCleverly.eReport.Cargas.Falabella/Procesos/bf_ProcesaCodigoUnicoCliente.usql",
+					"scriptLinkedService": {
+						"referenceName": "ereportadlascripts",
+						"type": "LinkedServiceReference"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Rcd/Falabella/Procesos"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-01T22:39:59Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

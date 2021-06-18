@@ -1,0 +1,44 @@
+{
+	"name": "dbnormativo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dbnormativo",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"nombreTabla": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Base de datos"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PROCESO",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PRODUCTO",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().nombreTabla",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

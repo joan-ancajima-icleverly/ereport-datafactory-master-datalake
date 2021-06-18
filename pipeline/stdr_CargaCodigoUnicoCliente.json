@@ -1,0 +1,37 @@
+{
+	"name": "stdr_CargaCodigoUnicoCliente",
+	"properties": {
+		"activities": [
+			{
+				"name": "stdr_CargaCodigoUnicoCliente",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/External/InnovationCleverly.eReport.Cargas.Santander/Cargas/CargaInterfaceCodigoUnicoCliente.usql",
+					"scriptLinkedService": {
+						"referenceName": "ereportadlascripts",
+						"type": "LinkedServiceReference"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Rcd/Santander/Cargas"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-01T22:39:59Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

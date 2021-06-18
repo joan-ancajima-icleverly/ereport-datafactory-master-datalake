@@ -1,0 +1,123 @@
+{
+	"name": "CargarN6ASantander",
+	"properties": {
+		"activities": [
+			{
+				"name": "CargaCodigoUnicoCliente",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/External/InnovationCleverly.eReport.Cargas.Santander/Cargas/CargaInterfaceCodigoUnicoCliente.usql",
+					"scriptLinkedService": {
+						"referenceName": "ereportadlascripts",
+						"type": "LinkedServiceReference"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "CargaCodigoUnicoClienteDetalle",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/External/InnovationCleverly.eReport.Cargas.Santander/Cargas/CargaInterfaceCodigoUnicoClienteDetalle.usql",
+					"scriptLinkedService": {
+						"referenceName": "ereportadlascripts",
+						"type": "LinkedServiceReference"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "ProcesaCodigoUnicoCliente",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [
+					{
+						"activity": "CargaCodigoUnicoCliente",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/External/InnovationCleverly.eReport.Cargas.Santander/Cargas/CargaInterfaceCodigoUnicoCliente.usql",
+					"scriptLinkedService": {
+						"referenceName": "ereportadlascripts",
+						"type": "LinkedServiceReference"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "ProcesaCodigoUnicoClienteDetalle",
+				"type": "DataLakeAnalyticsU-SQL",
+				"dependsOn": [
+					{
+						"activity": "CargaCodigoUnicoClienteDetalle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"scriptPath": "src/External/InnovationCleverly.eReport.Cargas.Santander/Cargas/CargaInterfaceCodigoUnicoClienteDetalle.usql",
+					"scriptLinkedService": {
+						"referenceName": "ereportadlascripts",
+						"type": "LinkedServiceReference"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ereportadla",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "ReporteN6A/Cargas"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-01T07:15:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

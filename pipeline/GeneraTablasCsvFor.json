@@ -1,0 +1,111 @@
+{
+	"name": "GeneraTablasCsvFor",
+	"properties": {
+		"activities": [
+			{
+				"name": "RecorreTablas",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.listaTablas",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "GeneraTablasCsv",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureDataLakeStoreWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ""
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "dbnormativo",
+									"type": "DatasetReference",
+									"parameters": {
+										"nombreTabla": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "storageereport",
+									"type": "DatasetReference",
+									"parameters": {
+										"nombreArchivo": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"listaTablas": {
+				"type": "array",
+				"defaultValue": [
+					"CLASIFICACION_DEUDOR_PORCENTAJE",
+					"CLASIFICACION_DEUDOR_DIAS_ATRASO",
+					"DISCREPANCIA_CLASIFICACION_DEUDOR",
+					"EMPRESA",
+					"PROCESO_PRODUCTO",
+					"SUBPRODUCTO",
+					"AGENCIA",
+					"AGENCIA_OFICINA",
+					"OFICINA",
+					"PRODUCTO",
+					"CUENTA_CONTABLE",
+					"TIPO_CREDITO_SBS",
+					"PROCESO_PRODUCTO_DETALLE"
+				]
+			}
+		},
+		"folder": {
+			"name": "Configurations"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-07T20:37:34Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

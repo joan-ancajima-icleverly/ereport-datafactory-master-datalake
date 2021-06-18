@@ -1,0 +1,51 @@
+{
+	"name": "Generar tablas",
+	"properties": {
+		"activities": [
+			{
+				"name": "GenerarTablasCsvFor",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "GeneraTablasCsvFor",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"listaTablas": {
+							"value": "@pipeline().parameters.listaTablas",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"listaTablas": {
+				"type": "array",
+				"defaultValue": [
+					"CLASIFICACION_DEUDOR_PORCENTAJE",
+					"CLASIFICACION_DEUDOR_DIAS_ATRASO",
+					"DISCREPANCIA_CLASIFICACION_DEUDOR",
+					"EMPRESA",
+					"PROCESO_PRODUCTO",
+					"SUBPRODUCTO",
+					"AGENCIA",
+					"AGENCIA_OFICINA",
+					"OFICINA",
+					"PRODUCTO",
+					"CUENTA_CONTABLE",
+					"TIPO_CREDITO_SBS"
+				]
+			}
+		},
+		"folder": {
+			"name": "Invocaciones/Rcd"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-09T21:10:57Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

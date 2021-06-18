@@ -1,0 +1,366 @@
+{
+	"name": "bf_Rcd",
+	"properties": {
+		"activities": [
+			{
+				"name": "bf_CargaInterfaceFormatoRcd",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "CargaTablas",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "bf_CargaInterfaceFormatoRcd",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "bf_CargaInterfaceSaldosRcd",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "bf_CargaInterfaceFormatoRcd",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "bf_CargaInterfaceSaldosRcd",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "bf_ProcesaCodigoUnicoCliente",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "bf_CargaInterfaceSaldosRcd",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "bf_ProcesaCodigoUnicoCliente",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "bf_ProcesaRcd",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "bf_ProcesaClienteDeudorProducto",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "bf_ProcesaRcd",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "bf_ProcesaClienteDeudorProducto",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "bf_ProcesaCodigoUnicoCliente",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "bf_ProcesaClienteDeudorProducto",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "CargaInterfaceRcc",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "bf_ProcesaRcdSaldos",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "CargaInterfaceRcc",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ActualizaClasificacionRefinanciamiento",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "CargaInterfaceRcc",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ActualizaClasificacionRefinanciamiento",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "CalculaVan",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "ActualizaClasificacionRefinanciamiento",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "CalculaVan",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "GeneraPlanoRcd",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "ProcesaAlineamientoInteres",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "GeneraPlanoRcd",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ProcesaAlineamientoInteres",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "ProcesaProvisiones",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ProcesaAlineamientoInteres",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ProcesaClasificacionAlineada",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "ProcesaClasificacionInterna",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ProcesaClasificacionAlineada",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ProcesaClasificacionInterna",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "ProcesaClasificacionRefinanciada",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ProcesaClasificacionInterna",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ProcesaClasificacionRefinanciada",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "CalculaVan",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ProcesaClasificacionRefinanciada",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "CargaTablas",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "CargaTablas",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "bf_ProcesaRcdSaldos",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "bf_ProcesaRcd",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "bf_ProcesaRcdSaldos",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "ProcesaProvisiones",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "ProcesaClasificacionAlineada",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ProcesaProvisiones",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "GeneraTablasCsvBd",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "GeneraPlanoRcd",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "GeneraTablasCsvBd",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "CargaTablasBd",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "GeneraTablasCsvBd",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "CargaTablasBd",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Rcd"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-06-10T22:51:51Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
