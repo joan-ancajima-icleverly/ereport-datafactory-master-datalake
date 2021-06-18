@@ -1,0 +1,9 @@
+{
+	"name": "Data-FactoryDesarrollo",
+	"location": "southcentralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c18b2103-8e73-4989-9278-5b9d2966c24b",
+		"tenantId": "717b9a79-1b91-41ab-a6f7-a579b46a9b41"
+	}
+}
